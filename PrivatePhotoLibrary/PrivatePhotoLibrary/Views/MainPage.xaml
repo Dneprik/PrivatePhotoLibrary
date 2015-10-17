@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrivatePhotoLibrary.Views.MainPage"
+             >
+<StackLayout>
+<ListView ItemsSource="{Binding Photos}"></ListView>
+  <Button Text="Take Photo" Command="{Binding OpenCammeraCommand}"></Button>
+  <Image x:Name="priviewImage" WidthRequest="200" HeightRequest="200"></Image>
+</StackLayout>
+</ContentPage>
