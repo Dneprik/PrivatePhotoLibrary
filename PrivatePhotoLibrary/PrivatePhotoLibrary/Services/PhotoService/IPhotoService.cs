@@ -9,7 +9,8 @@ namespace PrivatePhotoLibrary.Services.PhotoService
 {
     public interface IPhotoService
     {
-        void AddPhoto(Photo photo);
-        List<Photo> GetPhotos();
+        void AddPhoto(PhotoModel photo);
+        List<PhotoModel> GetPhotos();
+        List<string> GetPhotosPaths();
     }
 }

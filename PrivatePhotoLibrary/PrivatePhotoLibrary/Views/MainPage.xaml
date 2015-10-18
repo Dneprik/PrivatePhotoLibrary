@@ -1,11 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PrivatePhotoLibrary.Views.MainPage"
-             >
-<StackLayout>
-<ListView ItemsSource="{Binding Photos}"></ListView>
-  <Button Text="Take Photo" Command="{Binding OpenCammeraCommand}"></Button>
-  <Image x:Name="priviewImage" WidthRequest="200" HeightRequest="200"></Image>
-</StackLayout>
+             x:Class="PrivatePhotoLibrary.Views.MainPage">
+    <StackLayout>
+        <ListView x:Name="ListView" ItemsSource="{Binding ListViewPhotos}" HorizontalOptions="Center"
+                  SeparatorVisibility="None" RowHeight="200">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Tapped="Cell_OnTapped">
+                        <Grid ColumnSpacing="15" Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Image1Path}" Grid.Column="0" Aspect="AspectFill" />
+                            <Image Source="{Binding Image2Path}" Grid.Column="1" Aspect="AspectFill">></Image>
+                            <Image Source="{Binding Image3Path}" Grid.Column="2" Aspect="AspectFill">></Image>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Take Photo" IsEnabled="{Binding IsCameraAvailable}" Command="{Binding OpenCammeraCommand}" />
+    </StackLayout>
 </ContentPage>

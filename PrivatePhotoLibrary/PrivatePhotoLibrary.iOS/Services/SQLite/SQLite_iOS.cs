@@ -1,7 +1,4 @@
-﻿
-
-
-using System;
+﻿using System;
 using System.IO;
 using PrivatePhotoLibrary.iOS.Services.SQLite;
 using PrivatePhotoLibrary.Services.SQLite;
@@ -15,7 +12,6 @@ namespace PrivatePhotoLibrary.iOS.Services.SQLite
     public class SQLite_iOS : ISQLite
     {
         public SQLite_iOS() { }
-
 
         public SQLiteConnection GetConnection()
         {

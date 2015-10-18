@@ -8,7 +8,7 @@ using SQLite;
 namespace PrivatePhotoLibrary.Models
 {
     [Table("Photos")]
-    public class Photo
+    public class PhotoModel
     {
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }

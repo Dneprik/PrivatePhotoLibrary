@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PrivatePhotoLibrary.Models;
 using PrivatePhotoLibrary.Services.SQLite;
 using SQLite;
@@ -17,18 +14,23 @@ namespace PrivatePhotoLibrary.Services.PhotoService
         public PhotoService()
         {
             _connection = DependencyService.Get<ISQLite>().GetConnection();
-            _connection.CreateTable<Photo>();
+            _connection.CreateTable<PhotoModel>();
         }
 
-        public void AddPhoto(Photo photo)
+        public void AddPhoto(PhotoModel photo)
         {
-            _connection.Insert(new Photo() {Path = photo.Path, DateCreated = photo.DateCreated });
-
+            _connection.Insert(new PhotoModel {Path = photo.Path, DateCreated = photo.DateCreated});
         }
 
-        public List<Photo> GetPhotos()
+        public List<PhotoModel> GetPhotos()
         {
-            return _connection.Table<Photo>().ToList();
+            //   _connection.DeleteAll<PhotoModel>();
+            return _connection.Table<PhotoModel>().ToList();
+        }
+
+        public List<string> GetPhotosPaths()
+        {
+            return _connection.Table<PhotoModel>().ToList().Select(t => t.Path).ToList();
         }
     }
 }
